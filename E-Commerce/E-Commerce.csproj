@@ -95,11 +95,49 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Areas\Panel\Views\Customers\Create.cshtml" />
+    <Content Include="Areas\Panel\Views\Customers\Delete.cshtml" />
+    <Content Include="Areas\Panel\Views\Customers\Details.cshtml" />
+    <Content Include="Areas\Panel\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\Panel\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\Panel\Views\Orders\Create.cshtml" />
+    <Content Include="Areas\Panel\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\Panel\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Panel\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\Panel\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Panel\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Panel\Views\Products\Delete.cshtml" />
+    <Content Include="Areas\Panel\Views\Products\Details.cshtml" />
+    <Content Include="Areas\Panel\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Panel\Views\Products\Index.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Panel\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Panel\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\Panel\Controllers\OrdersController.cs" />
+    <Compile Include="Areas\Panel\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Panel\PanelAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -112,7 +150,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="Areas\Panel\Views\web.config" />
+    <Content Include="Areas\Panel\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Panel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Index.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -122,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Panel\Models\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
   <PropertyGroup>

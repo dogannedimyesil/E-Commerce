@@ -15,5 +15,6 @@ namespace E_Commerce.Models
         public Customer Customer { get; set; }
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
+        public int OrderQuantity { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace E_Commerce.Models
         public string Colour { get; set; }
         public string Size { get; set; }
         public decimal Price { get; set; }
+        public int ProductQuantity { get; set; }
         [Column(TypeName = "text")]
         public string Description { get; set; }
         [MaxLength(1000)]
