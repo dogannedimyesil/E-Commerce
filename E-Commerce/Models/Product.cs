@@ -7,6 +7,15 @@ using System.Web;
 
 namespace E_Commerce.Models
 {
+    public enum Size
+    {
+        XS,
+        S,
+        M,
+        L,
+        XL,
+        XLL
+    }
     public class Product
     {
         [Key]
@@ -15,7 +24,7 @@ namespace E_Commerce.Models
         public string Name { get; set; }
         [MaxLength(20)]
         public string Colour { get; set; }
-        public string Size { get; set; }
+        public Size Size { get; set; }
         public decimal Price { get; set; }
         public int ProductQuantity { get; set; }
         [Column(TypeName = "text")]
