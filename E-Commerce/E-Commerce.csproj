@@ -171,7 +171,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Panel\Models\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Upload\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
