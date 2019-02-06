@@ -118,11 +118,6 @@
     <Content Include="Areas\Panel\Views\Products\Details.cshtml" />
     <Content Include="Areas\Panel\Views\Products\Edit.cshtml" />
     <Content Include="Areas\Panel\Views\Products\Index.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Create.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Delete.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Details.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Edit.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -158,6 +153,11 @@
     <Content Include="Areas\Panel\Views\web.config" />
     <Content Include="Areas\Panel\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Panel\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
