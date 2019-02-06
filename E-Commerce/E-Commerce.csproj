@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Panel\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Panel\Controllers\CustomersController.cs" />
     <Compile Include="Areas\Panel\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Panel\Controllers\ProductsController.cs" />
