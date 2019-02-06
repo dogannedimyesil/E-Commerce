@@ -9,13 +9,14 @@ namespace E_Commerce.Models
 {
     public class Category
     {
-        [Key, ForeignKey("ParentCategory")]
+        [Key]
         public int Id { get; set; }
+        [ForeignKey("ParentCategory")]
+        public int? ParentId { get; set; }
         public string Name { get; set; }
-        public List<Product> Products { get; set; }
-        
-        public List<Category> SubCategories { get; set; }
-        public Category ParentCategory { get; set; }
-    }
+        public virtual List<Product> Products { get; set; }
+        public virtual Category ParentCategory { get; set; }
+        public virtual List<Category> ChildCategory { get; set; }
 
+    }
 }
