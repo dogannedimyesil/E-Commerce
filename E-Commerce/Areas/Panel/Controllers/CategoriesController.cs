@@ -17,8 +17,7 @@ namespace E_Commerce.Areas.Panel.Controllers
         // GET: Panel/Categories
         public ActionResult Index()
         {
-            var categories = db.Categories.Include(c => c.ParentCategory);
-            return View(categories.ToList());
+            return View(db.Categories.ToList());
         }
 
         // GET: Panel/Categories/Details/5
@@ -39,8 +38,6 @@ namespace E_Commerce.Areas.Panel.Controllers
         // GET: Panel/Categories/Create
         public ActionResult Create()
         {
-            ViewBag.Categories = db.Categories.Where(x => x.ParentId == null).ToList();
-            //ViewBag.ParentId = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
@@ -49,7 +46,7 @@ namespace E_Commerce.Areas.Panel.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ParentId,Name")] Category category)
+        public ActionResult Create([Bind(Include = "Id,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +55,6 @@ namespace E_Commerce.Areas.Panel.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Categories = db.Categories.Where(x => x.ParentId == null).ToList();
             return View(category);
         }
 
@@ -74,7 +70,6 @@ namespace E_Commerce.Areas.Panel.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ParentId = new SelectList(db.Categories, "Id", "Name", category.ParentId);
             return View(category);
         }
 
@@ -83,7 +78,7 @@ namespace E_Commerce.Areas.Panel.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ParentId,Name")] Category category)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +86,6 @@ namespace E_Commerce.Areas.Panel.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ParentId = new SelectList(db.Categories, "Id", "Name", category.ParentId);
             return View(category);
         }
 
