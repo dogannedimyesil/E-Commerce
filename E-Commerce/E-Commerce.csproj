@@ -2842,6 +2842,11 @@
     <Content Include="Content\Site\vendor\slick\slick-theme.scss" />
     <Content Include="Content\Site\vendor\slick\slick.less" />
     <Content Include="Content\Site\vendor\slick\slick.scss" />
+    <Content Include="Areas\Panel\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Details.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Panel\Views\Categories\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2879,11 +2884,6 @@
     <Content Include="Areas\Panel\Views\web.config" />
     <Content Include="Areas\Panel\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Panel\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Create.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Delete.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Details.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Edit.cshtml" />
-    <Content Include="Areas\Panel\Views\Categories\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
