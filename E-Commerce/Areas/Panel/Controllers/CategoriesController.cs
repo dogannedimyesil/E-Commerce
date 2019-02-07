@@ -48,15 +48,19 @@ namespace E_Commerce.Areas.Panel.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ParentId,Name")] Category category)
+        [ValidateAntiForgeryToken]       
+        public ActionResult Create([Bind(Include = "Id,ParentId,Name")] Category category, HttpPostedFileBase Image)
+     
         {
+            string folder = Server.MapPath("/Uploads/CategoryImage/");
+             Image.SaveAs(folder + Image.FileName);
+             category.ImageUrl = "/Uploads/CategoryImage/" + Image.FileName;
             if (ModelState.IsValid)
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
+    }
             ViewBag.Categories = db.Categories.Where(x => x.ParentId == null).ToList();
             //ViewBag.ParentId = new SelectList(db.Categories, "Id", "Name", category.ParentId);
             return View(category);

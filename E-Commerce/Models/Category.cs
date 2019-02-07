@@ -14,6 +14,7 @@ namespace E_Commerce.Models
         [ForeignKey("ParentCategory")]
         public int? ParentId { get; set; }
         public string Name { get; set; }
+        public string ImageUrl { get; set; }
         public virtual List<Product> Products { get; set; }
         public virtual Category ParentCategory { get; set; }
         public virtual List<Category> ChildCategory { get; set; }
