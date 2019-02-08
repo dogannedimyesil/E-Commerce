@@ -21,11 +21,10 @@ namespace E_Commerce.Models
         [Column(TypeName = "text")]
         public string Description { get; set; }
         [MaxLength(1000)]
-        public string ImageUrl { get; set; }
-
+        
         public virtual Category Category { get; set; }
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
-
+        public List<ProductImage> ProductImages { get; set; }
     }
 }

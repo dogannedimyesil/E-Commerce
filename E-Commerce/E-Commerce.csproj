@@ -2723,11 +2723,6 @@
     <Content Include="Areas\Panel\Views\Orders\Details.cshtml" />
     <Content Include="Areas\Panel\Views\Orders\Edit.cshtml" />
     <Content Include="Areas\Panel\Views\Orders\Index.cshtml" />
-    <Content Include="Areas\Panel\Views\Products\Create.cshtml" />
-    <Content Include="Areas\Panel\Views\Products\Delete.cshtml" />
-    <Content Include="Areas\Panel\Views\Products\Details.cshtml" />
-    <Content Include="Areas\Panel\Views\Products\Edit.cshtml" />
-    <Content Include="Areas\Panel\Views\Products\Index.cshtml" />
     <Content Include="Content\Site\fonts\elegant-font\html-css\fonts\ElegantIcons.eot" />
     <Content Include="Content\Site\fonts\elegant-font\html-css\fonts\ElegantIcons.ttf" />
     <Content Include="Content\Site\fonts\elegant-font\html-css\fonts\ElegantIcons.woff" />
@@ -2847,6 +2842,8 @@
     <Content Include="Areas\Panel\Views\Categories\Details.cshtml" />
     <Content Include="Areas\Panel\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Panel\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Panel\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Panel\Views\Products\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2877,6 +2874,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

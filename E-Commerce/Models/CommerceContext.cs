@@ -12,6 +12,7 @@ namespace E_Commerce.Models
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<ProductImage> ProductImages { get; set; }
         
     }
 }

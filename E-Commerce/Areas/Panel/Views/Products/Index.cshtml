@@ -1,75 +1,50 @@
-﻿@model IEnumerable<E_Commerce.Models.Product>
-
+﻿@using E_Commerce.Models
+@model List<Product>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Products";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Colour)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Size)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductQuantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Colour)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductQuantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageUrl)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
+<h2>Products</h2>
+<a href="/Panel/Products/Create" class="btn btn-primary">Add New Product</a>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Name</th>
+                <th>
+                    <a href="/Panel/Products/Edit/@item.Id" class="btn btn-warning">Edit</a>
+                    <span class="btn btn-danger del" rel="@item.Id" >Delete</span>
+                </th>
+            </tr>
+        }
+    </tbody>
 </table>
+<script>
+    $(document).ready(function () {
+        $(".del").click(function () {
+            var btn = $(this);
+            var id = btn.attr("rel")
+            $.ajax({
+                url: "Panel/Products/Delete" + id,
+                method: "POST",
+                success: function isDeleted() {
+                    if (isDeleted)
+                        btn.parent().parent().slideUp("slow");
+                    else
+                        alert("An error has occured");
+
+                }
+            });
+
+        });
+
+    });
+</script>
+
