@@ -9,10 +9,11 @@ namespace E_Commerce.Controllers
 {
     public class HomeController : Controller
     {
+        CommerceContext db = new CommerceContext();
         // GET: Home
         public ActionResult Index()
-        {
-            return View();
+        {  
+            return View(db.Categories.ToList());
         }
     }
 }

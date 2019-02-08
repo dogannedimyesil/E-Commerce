@@ -88,8 +88,15 @@ namespace E_Commerce.Areas.Panel.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ParentId,Name")] Category category)
+        public ActionResult Edit([Bind(Include = "Id,ParentId,Name")] Category category, HttpPostedFileBase Image)
+
         {
+            if (Image != null)
+            {
+                string folder = Server.MapPath("/Uploads/CategoryImage/");
+                Image.SaveAs(folder + Image.FileName);
+                category.ImageUrl = "/Uploads/CategoryImage/" + Image.FileName;
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(category).State = EntityState.Modified;
