@@ -21,5 +21,18 @@ namespace E_Commerce.Areas.Panel.Controllers
             ViewBag.PossibleParents = db.Products.ToList();
             return View();
         }
+        [HttpPost]
+        public ActionResult Create(Product newProduct, int[] CategoryIds )
+        {
+            newProduct.??? = new List<Category>();
+
+            if (ModelState.IsValid)
+            {
+                db.Products.Add(newProduct);
+                db.SaveChanges();
+            }
+            ViewBag.Categories = db.Categories.ToList();
+            return View();
+        }
     }
 }

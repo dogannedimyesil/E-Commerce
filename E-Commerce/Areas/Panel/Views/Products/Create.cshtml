@@ -13,24 +13,47 @@
 }
 <form method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label>Product Name</label>
+        <label>Kategoriler</label>
+        <select name="CategoryIds" multiple >
+            @foreach (Category item in ViewBag.Categories)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Ürün Adı</label>
         <input name="Name" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Color</label>
+        <label>Renk</label>
         <input name="Color" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Price</label>
+        <label>Fiyat</label>
         <input type="number" name="Price" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Size</label>
+        <label>Beden</label>
         <select id="Size" class="form-control">
-            <option></option>
-
+            @{ 
+                var sizeoptions = Enum.GetValues(typeof(Size));
+            }
+            @foreach (var item in sizeoptions)
+            {
+                <option value="@Array.IndexOf(sizeoptions,item)">@item</option>
+            }
         </select>
 
+    </div>
+    <div class="form-group">
+        <label>Ürün Adeti</label>
+        <input type="number" name="ProductQuantity" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Ürün Özellikleri</label>
+        <p style="font-size:10px;">Lütfen ürün bilgilerini giriniz.</p>
+        <textarea name="Description" class="form-control" rows="5"></textarea>
     </div>
 
     <div class="form-group">
