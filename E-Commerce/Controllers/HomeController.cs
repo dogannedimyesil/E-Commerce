@@ -12,8 +12,10 @@ namespace E_Commerce.Controllers
         CommerceContext db = new CommerceContext();
         // GET: Home
         public ActionResult Index()
-        {  
-            return View(db.Categories.ToList());
+        {
+            ViewBag.Categories = db.Categories.Take(6).ToList();
+            ViewBag.Products = db.Products.OrderByDescending(x => x.Id).Take(15).ToList();
+            return View();
         }
     }
 }
