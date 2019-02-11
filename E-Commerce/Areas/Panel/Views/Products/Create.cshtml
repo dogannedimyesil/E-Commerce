@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
-@if(!ViewData.ModelState.IsValid)
+<link href="~/Content/jQuery-File-Upload-9.28.0/css/jquery.fileupload.css" rel="stylesheet" />
+<h2>Create Product</h2>
+@if (!ViewData.ModelState.IsValid)
 {
     <div class="alert alert-danger">
         @Html.ValidationSummary()
@@ -14,6 +14,35 @@
 <form method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label>Product Name</label>
-        <input name="ProductName" class="form-control" />
+        <input name="Name" class="form-control" />
     </div>
+    <div class="form-group">
+        <label>Color</label>
+        <input name="Color" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" name="Price" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Size</label>
+        <select id="Size" class="form-control">
+            <option></option>
+
+        </select>
+
+    </div>
+
+    <div class="form-group">
+        <span class="btn btn-success fileinput-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Resimleri Seçiniz</span>
+            <input id="fileupload" type="file" name="ProductImage" multiple />
+        </span>
+    </div>
+    <div id="progress" class="progress">
+        <div class="progress-bar progress-bar-success"></div>
+    </div>
+    <div id="files" class="files"></div>
+
 </form>

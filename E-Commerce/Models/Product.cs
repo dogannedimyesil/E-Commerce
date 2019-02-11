@@ -14,17 +14,25 @@ namespace E_Commerce.Models
         [MaxLength(200)]
         public string Name { get; set; }
         [MaxLength(20)]
-        public string Colour { get; set; }
-        public string Size { get; set; }
+        public string Color { get; set; }
         public decimal Price { get; set; }
         public int ProductQuantity { get; set; }
         [Column(TypeName = "text")]
         public string Description { get; set; }
-        [MaxLength(1000)]
         
+        public Size Size { get; set; }
         public virtual Category Category { get; set; }
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
         public List<ProductImage> ProductImages { get; set; }
+
+    }
+    public enum Size
+    {
+        XS,
+        S,
+        M,
+        L,
+        XL
     }
 }
