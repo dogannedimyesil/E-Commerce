@@ -24,7 +24,7 @@ namespace E_Commerce.Areas.Panel.Controllers
         [HttpPost]
         public ActionResult Create(Product newProduct, int[] CategoryIds )
         {
-            newProduct.??? = new List<Category>();
+            //newProduct.??? = new List<Category>();
 
             if (ModelState.IsValid)
             {
