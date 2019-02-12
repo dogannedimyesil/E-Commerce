@@ -11,61 +11,62 @@
         @Html.ValidationSummary()
     </div>
 }
-<form method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label>Kategoriler</label>
-        <select name="CategoryIds" multiple >
-            @foreach (Category item in ViewBag.Categories)
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>Kategoriler</label>
+            <select name="CategoryIds">
+                @foreach (Category item in ViewBag.Categories)
             {
                 <option value="@item.Id">@item.Name</option>
-            }
-        </select>
-    </div>
-    <div class="form-group">
-        <label>Ürün Adı</label>
-        <input name="Name" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Renk</label>
-        <input name="Color" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Fiyat</label>
-        <input type="number" name="Price" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Beden</label>
-        <select id="Size" class="form-control">
-            @{ 
+        }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Ürün Adı</label>
+            <input name="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Renk</label>
+            <input name="Color" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Fiyat</label>
+            <input type="number" name="Price" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Beden</label>
+            <select id="Size" class="form-control" name="sizes">
+                @{
                 var sizeoptions = Enum.GetValues(typeof(Size));
-            }
-            @foreach (var item in sizeoptions)
+                }
+                @foreach (var item in sizeoptions)
             {
                 <option value="@Array.IndexOf(sizeoptions,item)">@item</option>
-            }
-        </select>
+        }
+            </select>
 
-    </div>
-    <div class="form-group">
-        <label>Ürün Adeti</label>
-        <input type="number" name="ProductQuantity" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Ürün Özellikleri</label>
-        <p style="font-size:10px;">Lütfen ürün bilgilerini giriniz.</p>
-        <textarea name="Description" class="form-control" rows="5"></textarea>
-    </div>
+        </div>
+        <div class="form-group">
+            <label>Ürün Adeti</label>
+            <input type="number" name="ProductQuantity" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Ürün Özellikleri</label>
+            <p style="font-size:10px;">Lütfen ürün bilgilerini giriniz.</p>
+            <textarea name="Description" class="form-control" rows="5"></textarea>
+        </div>
 
-    <div class="form-group">
-        <span class="btn btn-success fileinput-button">
-            <i class="glyphicon glyphicon-plus"></i>
-            <span>Resimleri Seçiniz</span>
-            <input id="fileupload" type="file" name="ProductImage" multiple />
-        </span>
-    </div>
-    <div id="progress" class="progress">
-        <div class="progress-bar progress-bar-success"></div>
-    </div>
-    <div id="files" class="files"></div>
+        <div class="form-group">
+            <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>Resimleri Seçiniz</span>
+                <input id="fileupload" type="file" name="productImage" multiple />
+            </span>
+        </div>
+        <button class="btn btn-success">Kaydet</button>
 
-</form>
+        <div id="progress" class="progress">
+            <div class="progress-bar progress-bar-success"></div>
+        </div>
+        <div id="files" class="files"></div>
+    </form>
