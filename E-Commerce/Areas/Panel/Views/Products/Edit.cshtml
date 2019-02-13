@@ -1,0 +1,80 @@
+﻿@using E_Commerce.Models
+@model Product
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Düzenle</h2>
+<link href="~/Content/jQuery-File-Upload-9.28.0/css/jquery.fileupload.css" rel="stylesheet" />
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary()
+    </div>
+}
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="ProductId" value="@Model.Id" />
+        <div class="form-group">
+            <label>Kategoriler</label>
+            <select name="CategoryIds" class="form-control">
+                <option value="">Seçiniz</option>
+                @foreach (Category item in ViewBag.Categories)
+                {
+                    var a = Model.CategoryId == item.Id ? "selected" : "";
+                    <option @a value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Ürün Adı</label>
+            <input name="Name" value="@Model.Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Renk</label>
+            <input name="Color" value="@Model.Color" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Fiyat</label>
+            <input type="number" value="@Model.Price.ToString().Replace(",",".")" name="Price" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Beden</label>
+            <select id="Size" class="form-control" name="Size">
+                
+                <option value="">Seçiniz</option>
+                @{
+                    var sizeoptions = Enum.GetNames(typeof(Size));
+                }
+                @foreach (var item in sizeoptions)
+                {
+                    var a = Model.Size.ToString() == item ? "selected" : "";
+                    <option value="@Array.IndexOf(sizeoptions,item)" @a>@item</option>}
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label>Ürün Adeti</label>
+            <input type="number" name="ProductQuantity" value="@Model.ProductQuantity" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Ürün Özellikleri</label>
+            <p style="font-size:15px;">Lütfen ürün bilgilerini giriniz.</p>
+            <textarea name="Description" class="form-control" rows="5">@Model.Description</textarea>
+        </div>
+
+        <div class="form-group">
+            <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>Resimleri Seçiniz</span>
+                <input id="fileupload" type="file" name="productImage" value="@Model.ProductImages" multiple />
+            </span>
+        </div>
+        <button class="btn btn-success">Kaydet</button>
+
+        <div id="progress" class="progress">
+            <div class="progress-bar progress-bar-success"></div>
+        </div>
+        <div id="files" class="files"></div>
+    </form>
+
+
