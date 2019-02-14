@@ -2902,6 +2902,7 @@
     <Content Include="Content\jQuery-File-Upload-9.28.0\server\php\Dockerfile" />
     <Content Include="Content\jQuery-File-Upload-9.28.0\server\php\files\.htaccess" />
     <Content Include="Content\jQuery-File-Upload-9.28.0\VULNERABILITIES.md" />
+    <Content Include="Areas\Panel\Views\Products\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2923,6 +2924,8 @@
     <Compile Include="Areas\Panel\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Panel\PanelAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
