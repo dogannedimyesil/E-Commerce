@@ -1,7 +1,9 @@
-﻿using E_Commerce.Models;
+﻿
+using E_Commerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -93,9 +95,9 @@ namespace E_Commerce.Areas.Panel.Controllers
                 var c = db.Products.Find(id);
                 db.Products.Remove(c);
                 db.SaveChanges();
-
-                var path = Server.MapPath("/Uploads/Product/");
-                path += id + ".jpg";
+                
+                var path = Server.MapPath("/Uploads/Product/") + c.ProductImages;
+               
                 if (System.IO.File.Exists(path))
                     System.IO.File.Delete(path);
 
@@ -105,6 +107,26 @@ namespace E_Commerce.Areas.Panel.Controllers
             {
                 return Json(false);
             }
+        }
+        public JsonResult ImageUpload(HttpPostedFileBase productImages)
+        {
+            if (productImages != null && productImages.ContentLength != 0)
+            {
+                var path = Server.MapPath("/Uploads/Product/");
+                productImages.SaveAs(path + productImages.FileName);
+
+                FileList flist = new FileList();
+                var files = flist.files;
+
+                File f = new File();
+                f.name = productImages.FileName;
+                f.url = "/Uploads/Product/" + productImages.FileName;
+                f.thumbnailUrl = f.url;
+
+                files.Add(f);
+                return Json(flist);
+            }
+            return Json(false);
         }
     }
 }
