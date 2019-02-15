@@ -19,6 +19,7 @@ body{
     overflow-y: hidden;
 }
 a{
+    margin-top:-20px;
   text-decoration:none;
   color:#444444;
 }
@@ -184,17 +185,19 @@ a{
         <div class="white-panel">
             <div class="login-show">
                 <h2>ÜYE GİRİŞİ</h2>
-                <input type="text" placeholder="Email">
-                <input type="password" placeholder="Şifre">
+                <input name="Email" type="text" placeholder="Email">
+                <input nametype="password" placeholder="Şifre">
                 <input type="button" value="GİRİŞ YAP">
+                <input id="Checkbox1" type="checkbox" text style="display:inline-block;"/>
+                <p class="hatirla" style="display:inline-block;">Beni Hatırla</p>
                 <a href="">Şifrenizi mi unuttunuz?</a>
             </div>
             <div class="register-show">
                 <h2>ÜYE OL</h2>
-                <input type="text" placeholder="AdSoyad">
-                <input type="text" placeholder="Email">
-                <input type="password" placeholder="Şifre">
-                <input type="password" placeholder="Şifre (Tekrar)">
+                <input name="NameSurname" type="text" placeholder="Ad Soyad">
+                <input name="Email"  type="text" placeholder="Email">
+                <input name="Password" type="password" placeholder="Şifre">
+                <input name="Password" type="password" placeholder="Şifre (Tekrar)">
                 <input type="button" value="ÜYE OL">
             </div>
         </div>
