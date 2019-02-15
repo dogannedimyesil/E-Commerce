@@ -2924,7 +2924,7 @@
     <Compile Include="Areas\Panel\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Panel\PanelAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2952,7 +2952,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Footer.cshtml" />
     <Content Include="Views\Home\_Menu.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <None Include="Web.Debug.config">

@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace E_Commerce.Controllers
 {
-    public class LoginController : Controller
+    public class CustomerController : Controller
     {
         // GET: Login
         CommerceContext db = new CommerceContext();
