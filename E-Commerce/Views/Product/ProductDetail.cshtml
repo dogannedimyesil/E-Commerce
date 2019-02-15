@@ -12,13 +12,11 @@
                 <div class="slick3">
                     @foreach (var item in Model.ProductImages)
                     {
-
                         <div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
                             <div class="wrap-pic-w">
-                                <img src="/Uploads/Product/@item.ImageURL" alt="IMG-PRODUCT">
+                                <img src="/Uploads/Product/@item.First().ImageURL" alt="IMG-PRODUCT">
                             </div>
                         </div>
-
                     }
 
                     <div class="item-slick3" data-thumb="images/thumb-item-01.jpg">

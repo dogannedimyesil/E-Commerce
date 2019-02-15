@@ -12,8 +12,6 @@ namespace E_Commerce.Models
         [Key]
         public int Id { get; set; }
         public string ImageURL { get; set; }
-        [ForeignKey("Product")]
-        public int ProductId { get; set; }
         public virtual Product Product { get; set; }
     }
 }
