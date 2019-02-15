@@ -17,5 +17,16 @@ namespace E_Commerce.Controllers
             ViewBag.Products = db.Products.OrderByDescending(x => x.Id).Take(15).ToList();
             return View();
         }
+
+        public ActionResult _Menu()
+        {
+            ViewBag.Categories = db.Categories.Where(x => x.ParentId==null).ToList();
+            return View();
+        }
+
+        public ActionResult _Footer()
+        {
+            return View();
+        }
     }
 }

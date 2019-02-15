@@ -19,32 +19,32 @@
             <tr>
                 <th>@item.Name</th>
                 <th>
-                    <a href="/Panel/Products/Edit/@item.Id" class="btn btn-warning">Edit</a>
-                    <span class="btn btn-danger del" rel="@item.Id" >Delete</span>
+                    <a href="/Panel/Products/Edit/@item.Id" class="btn btn-warning">Düzenle</a>
+                    <span class="btn btn-danger del" rel="@item.Id" >Sil</span>
                 </th>
             </tr>
         }
     </tbody>
 </table>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
         $(".del").click(function () {
             var btn = $(this);
-            var id = btn.attr("rel")
+            var id = btn.attr("rel");
             $.ajax({
-                url: "Panel/Products/Delete" + id,
+                url: "/Panel/Products/Delete/" + id,
                 method: "POST",
-                success: function isDeleted() {
-                    if (isDeleted)
+                success: function (IsDeleted) {
+                    if (IsDeleted)
                         btn.parent().parent().slideUp("slow");
                     else
-                        alert("An error has occured");
-
+                        alert("An error has occured.");
                 }
             });
-
         });
-
     });
 </script>
 
