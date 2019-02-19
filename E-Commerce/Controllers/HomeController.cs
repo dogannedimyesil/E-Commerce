@@ -14,7 +14,7 @@ namespace E_Commerce.Controllers
         public ActionResult Index()
         {
             ViewBag.Categories = db.Categories.Take(6).ToList();
-            ViewBag.Products = db.Products.OrderByDescending(x => x.Id).Take(15).ToList();
+            
             return View();
         }
 
@@ -26,6 +26,12 @@ namespace E_Commerce.Controllers
 
         public ActionResult _Footer()
         {
+            return View();
+        }
+
+        public ActionResult _Slider()
+        {
+            ViewBag.Products = db.Products.OrderByDescending(x => x.Id).Take(15).ToList();
             return View();
         }
     }

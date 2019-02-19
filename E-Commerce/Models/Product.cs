@@ -19,12 +19,13 @@ namespace E_Commerce.Models
         public int ProductQuantity { get; set; }
         [Column(TypeName = "text")]
         public string Description { get; set; }
-        
         public Size Size { get; set; }
-        public virtual Category Category { get; set; }
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
         public virtual List<ProductImage> ProductImages { get; set; }
+        public virtual List<Cart> Cart { get; set; }
+        
 
     }
     public enum Size
