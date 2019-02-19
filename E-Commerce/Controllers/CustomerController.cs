@@ -1,6 +1,7 @@
 ﻿using E_Commerce.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,24 +11,30 @@ namespace E_Commerce.Controllers
     public class CustomerController : Controller
     {
         // GET: Login
+
         CommerceContext db = new CommerceContext();
+        [HttpPost]
         public ActionResult Index()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Index(Customer newCustomer)
+
+        [HttpGet]
+        public ActionResult Index(string a)
         {
-            if (ModelState.IsValid)
-            {
-                db.Customers.Add(newCustomer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(newCustomer);
+            return View();
         }
-       
-
-    }
+        [HttpPost]
+        public JsonResult Customer(Customer customer)
+        {
+            if(ModelState.IsValid)
+            {
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                RedirectToAction("Index");
+                return Json(true);
+            }
+            return Json(false);
+        }
+    } 
 }
