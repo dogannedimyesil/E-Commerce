@@ -11,10 +11,19 @@ namespace E_Commerce.Models
     {
         [Key]
         public int Id { get; set; }
-        public int Quantity { get; set; }
+        public DateTime CreateDate { get; set; }
         public virtual List<Product> Products { get; set; } 
         public virtual List<Customer> Customers { get; set; }  
         public virtual CartDetail CartDetail { get; set; }
         public bool IsActive { get; set; }
+        public Cart()
+        {
+            CreateDate = DateTime.Now;
+        }
+
+        public decimal SubTotal { get
+            {
+                return Products.Sum(x => x.Price);
+            } }
     }
 }
