@@ -46,7 +46,7 @@
             </h4>
 
             <span class="m-text17">
-                Fiyat: @Model.Price ₺
+                Fiyat: @Model.Price.ToString("C")
             </span>
 
             <p class="s-text8 p-t-10">
@@ -62,7 +62,7 @@
 
                     <div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
                         <select class="selection-2" name="size">
-                            <option>Choose an option</option>
+                            <option>Beden seçiniz</option>
                             <option>Size S</option>
                             <option>Size M</option>
                             <option>Size L</option>
@@ -109,7 +109,7 @@
 
                         <div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10">
                             <!-- Button -->
-                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                            <button id="cart" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 " rel="@Model.Id">
                                 Add to Cart
                             </button>
                         </div>

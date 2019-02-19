@@ -19,11 +19,11 @@
                         <tr class="table-row">
                             <td class="column-1">
                                 <div class="cart-img-product b-rad-4 o-f-hidden">
-                                    <img src="/Uploads/Product/@item.Product.ProductImages.FirstOrDefault().ImageURL" alt="IMG-PRODUCT">
+                                    <img src="/Uploads/Product/@item.CartDetail.Product.ProductImages.FirstOrDefault().ImageURL" alt="IMG-PRODUCT">
                                 </div>
                             </td>
-                            <td class="column-2">@item.Product.Name</td>
-                            <td class="column-3">@item.Product.Price ₺</td>
+                            <td class="column-2">@item.CartDetail.Product.Name</td>
+                            <td class="column-3">@item.CartDetail.Product.Price.ToString("C")</td>
                             <td class="column-4">
                                 <div class="flex-w bo5 of-hidden w-size17">
                                     <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
@@ -37,7 +37,7 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="column-5">@item.Total ₺</td>
+                            <td class="column-5">@item.SubTotal.ToString("C")</td>
                         </tr>
                     }
                   
