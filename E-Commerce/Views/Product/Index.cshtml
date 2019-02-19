@@ -24,7 +24,7 @@
                                 </a>
                             </li>
                         }
-                        </ul>
+                    </ul>
                     <!--  -->
                     <h4 class="m-text14 p-b-32">
                         Filtre
@@ -60,14 +60,14 @@
 
                         <ul class="flex-w">
                             @*@{ int filter = 0;}
-                            @foreach (var item in collection)
-                            {
-                                filter++;
-                                <li class="m-r-10">
-                                    <input class="checkbox-color-filter" id="@Html.Raw("color-filter" + filter)" type="checkbox" name="color-filter1">
-                                    <label class="color-filter color-filter1" for="@Html.Raw("color-filter" + filter)"></label>
-                                </li>
-                            }*@
+                                @foreach (var item in collection)
+                                {
+                                    filter++;
+                                    <li class="m-r-10">
+                                        <input class="checkbox-color-filter" id="@Html.Raw("color-filter" + filter)" type="checkbox" name="color-filter1">
+                                        <label class="color-filter color-filter1" for="@Html.Raw("color-filter" + filter)"></label>
+                                    </li>
+                                }*@
 
                         </ul>
                     </div>
@@ -121,13 +121,13 @@
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-                         
-                                        @if (item.ProductImages != null && item.ProductImages.Count != 0)
-                                        {
-                                    <img src="/Uploads/Product/@item.ProductImages.FirstOrDefault().ImageURL" alt="IMG-PRODUCT">
-                                        }
 
-                                    
+                                    @if (item.ProductImages != null && item.ProductImages.Count != 0)
+                                    {
+                                        <img src="/Uploads/Product/@item.ProductImages.FirstOrDefault().ImageURL" alt="IMG-PRODUCT">
+                                    }
+
+
                                     <div class="block2-overlay trans-0-4">
                                         <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                             <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
@@ -136,7 +136,7 @@
 
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
                                             <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            <button id="cart" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                 Sepete Ekle
                                             </button>
                                         </div>
@@ -166,3 +166,5 @@
         </div>
     </div>
 </section>
+
+@Html.Action("_Slider", "Home", new { area = "" })
