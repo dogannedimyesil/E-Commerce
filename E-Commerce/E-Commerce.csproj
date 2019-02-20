@@ -140,15 +140,6 @@
     <Content Include="Content\jQuery-File-Upload-9.28.0\server\php\UploadHandler.php" />
     <Content Include="Content\jQuery-File-Upload-9.28.0\test\index.html" />
     <Content Include="Content\jQuery-File-Upload-9.28.0\test\test.js" />
-    <Content Include="Content\owl-carousel\assets\ajax-loader.gif" />
-    <Content Include="Content\owl-carousel\assets\owl.carousel.css" />
-    <Content Include="Content\owl-carousel\assets\owl.carousel.min.css" />
-    <Content Include="Content\owl-carousel\assets\owl.theme.default.css" />
-    <Content Include="Content\owl-carousel\assets\owl.theme.default.min.css" />
-    <Content Include="Content\owl-carousel\assets\owl.theme.green.css" />
-    <Content Include="Content\owl-carousel\assets\owl.theme.green.min.css" />
-    <Content Include="Content\owl-carousel\assets\owl.video.play.png" />
-    <Content Include="Content\owl-carousel\owl.carousel.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Site\css\main.css" />
     <Content Include="Content\Site\css\main.min.css" />
@@ -2968,6 +2959,7 @@
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Home\_Slider.cshtml" />
+    <Content Include="Views\Home\_MinCart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

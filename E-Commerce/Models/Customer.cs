@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -16,6 +17,8 @@ namespace E_Commerce.Models
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public virtual List<Order> Orders { get; set; }
+        [ForeignKey("Cart")]
+        public int CartId { get; set; }
         public virtual Cart Cart { get; set; }
     }
     
