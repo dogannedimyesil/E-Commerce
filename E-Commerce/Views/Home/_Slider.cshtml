@@ -1,6 +1,6 @@
 ﻿@using E_Commerce.Models
 
-@{ 
+@{
     Layout = null;
 }
 
@@ -15,10 +15,10 @@
         <!-- Slide2 -->
         <div class="wrap-slick2">
             <div class="slick2">
+                @foreach (Product item in ViewBag.Products)
+                {
+                    <div class="item-slick2 p-l-15 p-r-15">
 
-                <div class="item-slick2 p-l-15 p-r-15">
-                    @foreach (Product item in ViewBag.Products)
-                    {
                         <div class="block2">
                             <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
                                 <img src="/Uploads/Product/@item.ProductImages.FirstOrDefault().ImageURL" alt="IMG-PRODUCT">
@@ -47,11 +47,8 @@
                                 </span>
                             </div>
                         </div>
-                    }
-                    <!-- Block2 -->
-
-                </div>
-
+                    </div>
+                }
             </div>
         </div>
 

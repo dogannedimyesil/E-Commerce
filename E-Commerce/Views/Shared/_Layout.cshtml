@@ -57,8 +57,8 @@
                 </div>
 
                 @*<span class="topbar-child1">
-                    Free shipping for standard order over $100
-                </span>*@
+                        Free shipping for standard order over $100
+                    </span>*@
 
                 <div class="topbar-child2">
                     <span class="topbar-email">
@@ -85,7 +85,31 @@
                 @Html.Action("_Menu", "Home", new { area = "" })
 
                 <!-- Header Icon -->
-                @Html.Action("_MinCart", "Home", new { area = "" })
+                <div class="header-icons">
+                    @if (Session["NameSurname"] != null)
+                    {
+                        <div class="col-md-3 img">
+                            <a href="/Customer" class="header-wrapicon1 dis-block">
+                                <img src="/Content/Site/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 style="color:black;">@Session["NameSurname"]</h5>
+                            <p>@Session["Email"]</p>
+                        </div>
+                    }
+
+
+                    <span class="linedivide1"></span>
+
+                    <div class="header-wrapicon2">
+                        <img src="/Content/Site/images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                        <span class="header-icons-noti">0</span>
+
+                        <!-- Header cart noti -->
+                        @Html.Action("_MinCart", "Home", new { area = "" })
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -97,7 +121,7 @@
 
     @RenderBody()
 
-   
+
 
     <!-- Footer -->
     @Html.Action("_Footer", "Home", new { area = "" })

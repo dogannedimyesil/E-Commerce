@@ -19,7 +19,7 @@
                         @foreach (Category item in ViewBag.Categories)
                         {
                             <li class="p-t-4">
-                                <a href="#" class="s-text13 active1">
+                                <a href="?id=@item.Id" class="s-text13 active1">
                                     @item.Name
                                 </a>
                             </li>

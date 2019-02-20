@@ -14,9 +14,27 @@ namespace E_Commerce.Controllers
 
         CommerceContext db = new CommerceContext();
         [HttpPost]
-        public ActionResult Index()
+        public ActionResult Index(string Email, string Password)
         {
-            return View();
+            bool? isTrue = false;
+            Customer customer = new Customer();
+            List<Customer> ListCustomers = db.Customers.ToList();
+            foreach (var item in ListCustomers)
+            {
+                if(Email == item.Email)
+                {
+                    if(Password == item.Password)
+                    {
+                        isTrue = true;
+                        Session["Email"] = item.Email;
+                        Session["NameSurname"] = item.NameSurname;
+                        return RedirectToAction("Index", "Home");
+                          
+                    }
+                }
+            }
+            ViewBag.Message("Geçerli bilgi giriniz.");
+            return View(isTrue);
         }
 
         [HttpGet]

@@ -12,15 +12,8 @@ namespace E_Commerce.Controllers
         CommerceContext db = new CommerceContext();
         public ActionResult Index(int ? id, HttpPostedFileBase[] image)
         {
-            //ViewBag.ProductImage = (from p in db.Products
-            //                        join pi in db.ProductImages
-            // on p.Id equals pi.Product.Id where p.Id == pi.Product.Id
-            //                        select new
-            //                        {
-                                        
-            //                        });
             ViewBag.Categories = db.Categories.ToList();
-            if (id != null)
+            if (id.HasValue)
                 return View(db.Products.Where(x => x.CategoryId == id).ToList());
             else
                 return View(db.Products.ToList());
