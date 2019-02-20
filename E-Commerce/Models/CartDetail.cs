@@ -9,7 +9,9 @@ namespace E_Commerce.Models
 {
     public class CartDetail
     {
-        [Key,ForeignKey("Cart")]
+        [Key]
+        public int Id { get; set; }
+        [ForeignKey("Cart")]
         public int CartId { get; set; }
         public virtual Cart Cart { get; set; }
         public virtual Product Product { get; set; }
