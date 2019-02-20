@@ -37,8 +37,7 @@
     <link rel="stylesheet" type="text/css" href="/Content/Site/css/util.css">
     <link rel="stylesheet" type="text/css" href="/Content/Site/css/main.css">
     <!--===============================================================================================-->
-    @*@RenderSection("CSS", false)*@
-
+  
 
 </head>
 <body class="animsition">
@@ -99,7 +98,6 @@
                         </div>
                     }
 
-
                     <span class="linedivide1"></span>
 
                     <div class="header-wrapicon2">
@@ -134,6 +132,7 @@
 
     <!-- Container Selection1 -->
     <div id="dropDownSelect1"></div>
+    <div id="dropDownSelect2"></div>
 
     <!--===============================================================================================-->
     <script type="text/javascript" src="/Content/Site/vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -173,7 +172,7 @@
         $('.block2-btn-addcart').each(function () {
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
             $(this).on('click', function () {
-                var cart = $(this).attr("id");
+                var cart = $(this).attr("rel");
                 $.ajax({
                     url: "/Cart/AddToCart/" + cart,
                     method: "POST"
@@ -192,6 +191,6 @@
 
     <!--===============================================================================================-->
     <script src="/Content/Site/js/main.js"></script>
-    @*@RenderSection("Scripts", false)*@
+  
 </body>
 </html>

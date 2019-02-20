@@ -7,11 +7,7 @@
         <ul class="main_menu">
             <li>
                 <a href="/">Anasayfa</a>
-                <ul class="sub_menu">
-                    <li><a href="index.html">Homepage V1</a></li>
-                    <li><a href="home-02.html">Homepage V2</a></li>
-                    <li><a href="home-03.html">Homepage V3</a></li>
-                </ul>
+               
             </li>
 
             <li>
@@ -20,11 +16,11 @@
                     @foreach (Category item in ViewBag.Categories )
                     {
                         <li>
-                            <a href="#">@item.Name</a>
+                            <a href="/product/index/?id=@item.Id">@item.Name</a>
                             <ul class="sub-menu menu">
                                 @foreach (var item2 in item.ChildCategory)
                                 {
-                                    <li><a href="#">@item2.Name</a></li>
+                                    <li><a href="/product/index/?id=@item2.Id">@item2.Name</a></li>
                                 }
                             </ul>
                         </li>
@@ -36,15 +32,7 @@
             <li class="sale-noti">
                 <a href="/Product/">Tüm Ürünler</a>
             </li>
-
-            <li>
-                <a href="cart.html">Features</a>
-            </li>
-
-            <li>
-                <a href="blog.html">Blog</a>
-            </li>
-
+           
             <li>
                 <a href="/Home/about">Hakkımızda</a>
             </li>
