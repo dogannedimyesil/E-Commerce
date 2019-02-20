@@ -33,7 +33,7 @@ namespace E_Commerce.Controllers
                     }
                 }
             }
-
+            ViewBag.Message("Geçerli bilgi giriniz.");
             return View(isTrue);
         }
 

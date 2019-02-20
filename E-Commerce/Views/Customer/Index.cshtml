@@ -199,11 +199,16 @@
 
         <div class="white-panel">
             <div class="login-show">
-                <form>
+                <form method="post">
                     <h2>ÜYE GİRİŞİ</h2>
+                    @Html.AntiForgeryToken()
                     <input name="Email" type="text" placeholder="Email">
                     <input name="password" placeholder="Şifre" type="password">
-                    <input type="button" value="GİRİŞ YAP">
+                    <input type="submit" value="GİRİŞ YAP">
+                    @if(Model == false)
+                    {
+                        <p>@ViewBag.Message</p>
+                    }
                     <input id="Checkbox1" type="checkbox" text style="display:inline-block;" />
                     <p class="hatirla" style="display:inline-block;">Beni Hatırla</p>
                     <a href="">Şifrenizi mi unuttunuz?</a>
