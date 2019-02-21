@@ -19,6 +19,10 @@ namespace E_Commerce.Controllers
         [HttpPost]
         public JsonResult AddToCart(CartDetail cart)
         {
+            if(Session["NameSurname"] == null)
+            {
+                Response.Redirect("Home");
+            }
             var customer = db.Customers.FirstOrDefault(x => x.Id == 21);
             
             if (ModelState.IsValid)
