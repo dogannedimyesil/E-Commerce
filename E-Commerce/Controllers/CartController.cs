@@ -25,7 +25,6 @@ namespace E_Commerce.Controllers
             {
                 customer.Cart.CartDetail.Add(cart);
                 db.Entry(customer).State = EntityState.Modified;
-                //db.CartDetails.Add(cart);
                 db.SaveChanges();
                 return Json(true);
             }

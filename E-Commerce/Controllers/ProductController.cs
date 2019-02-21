@@ -27,7 +27,9 @@ namespace E_Commerce.Controllers
             var products = from p in db.Products select p;
             if (!String.IsNullOrEmpty(search))
                 products = products.Where(x => x.Name.Contains(search));
-            return View(products.ToList());
+
+            ViewBag.Categories = db.Categories.ToList();
+            return View("Index", "",  products.ToList());
         }
 
         public ActionResult ProductDetail(int id)
