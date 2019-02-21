@@ -42,6 +42,14 @@ namespace E_Commerce.Controllers
         {
             return View();
         }
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            Session.RemoveAll();
+            RedirectToAction("Index","Home");
+            return View();
+        }
         [HttpPost]
         public JsonResult Customer(Customer customer)
         {
