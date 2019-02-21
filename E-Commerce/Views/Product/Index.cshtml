@@ -19,9 +19,15 @@
                         @foreach (Category item in ViewBag.Categories)
                         {
                             <li class="p-t-4">
-                                <a href="#" class="s-text13 active1">
+                                <a href="?id=@item.Id" class="s-text13 active1">
                                     @item.Name
                                 </a>
+                                <ul>
+                                    @foreach (var item2 in item.ChildCategory)
+                                    {
+                                        <li class="p-t-4"><a href="/product/index/?id=@item2.Id">>>@item2.Name</a></li>
+                                    }
+                                </ul>
                             </li>
                         }
                     </ul>
@@ -58,27 +64,67 @@
                             Renk
                         </div>
 
+                        @*<ul class="flex-w">
+                            @{ int filter = 0;}
+            @foreach (var item in collection)
+            {
+                filter++;
+                <li class="m-r-10">
+                    <input class="checkbox-color-filter" id="@Html.Raw("color-filter" + filter)" type="checkbox" name="color-filter1">
+                    <label class="color-filter color-filter1" for="@Html.Raw("color-filter" + filter)"></label>
+                </li>
+            }
+                        </ul>*@
                         <ul class="flex-w">
-                            @*@{ int filter = 0;}
-                                @foreach (var item in collection)
-                                {
-                                    filter++;
-                                    <li class="m-r-10">
-                                        <input class="checkbox-color-filter" id="@Html.Raw("color-filter" + filter)" type="checkbox" name="color-filter1">
-                                        <label class="color-filter color-filter1" for="@Html.Raw("color-filter" + filter)"></label>
-                                    </li>
-                                }*@
+                            <li class="m-r-10">
+                                <input class="checkbox-color-filter" id="color-filter1" type="checkbox" name="color-filter1">
+                                <label class="color-filter color-filter1" for="color-filter1"></label>
+                            </li>
 
+                            <li class="m-r-10">
+                                <input class="checkbox-color-filter" id="color-filter2" type="checkbox" name="color-filter2">
+                                <label class="color-filter color-filter2" for="color-filter2"></label>
+                            </li>
+
+                            <li class="m-r-10">
+                                <input class="checkbox-color-filter" id="color-filter3" type="checkbox" name="color-filter3">
+                                <label class="color-filter color-filter3" for="color-filter3"></label>
+                            </li>
+
+                            <li class="m-r-10">
+                                <input class="checkbox-color-filter" id="color-filter4" type="checkbox" name="color-filter4">
+                                <label class="color-filter color-filter4" for="color-filter4"></label>
+                            </li>
+
+                            <li class="m-r-10">
+                                <input class="checkbox-color-filter" id="color-filter5" type="checkbox" name="color-filter5">
+                                <label class="color-filter color-filter5" for="color-filter5"></label>
+                            </li>
+
+                            <li class="m-r-10">
+                                <input class="checkbox-color-filter" id="color-filter6" type="checkbox" name="color-filter6">
+                                <label class="color-filter color-filter6" for="color-filter6"></label>
+                            </li>
+
+                            <li class="m-r-10">
+                                <input class="checkbox-color-filter" id="color-filter7" type="checkbox" name="color-filter7">
+                                <label class="color-filter color-filter7" for="color-filter7"></label>
+                            </li>
                         </ul>
                     </div>
 
-                    <div class="search-product pos-relative bo4 of-hidden">
-                        <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
+                    @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+                    {
+                        <div class="search-product pos-relative bo4 of-hidden">
+                            <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search" placeholder="Ara...">
 
-                        <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                            <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </div>
+                            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                                <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    }
+
+
                 </div>
             </div>
 
@@ -88,10 +134,10 @@
                     <div class="flex-w">
                         <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
                             <select class="selection-2" name="sorting">
-                                <option>Default Sorting</option>
-                                <option>Popularity</option>
-                                <option>Price: low to high</option>
-                                <option>Price: high to low</option>
+
+                                <option value="">Sıralama</option>
+                                <option value="@ViewBag.HighPrice">Fiyata Göre Artan</option>
+                                <option @ViewBag.Price>Fiyata Göre Azalan</option>
                             </select>
                         </div>
 
@@ -108,9 +154,9 @@
                         </div>
                     </div>
 
-                    <span class="s-text8 p-t-5 p-b-5">
+                    @*<span class="s-text8 p-t-5 p-b-5">
                         Showing 1–12 of 16 results
-                    </span>
+                    </span>*@
                 </div>
 
                 <!-- Product -->
@@ -124,7 +170,7 @@
 
                                     @if (item.ProductImages != null && item.ProductImages.Count != 0)
                                     {
-                                        <img src="/Uploads/Product/@item.ProductImages.FirstOrDefault().ImageURL" alt="IMG-PRODUCT">
+                                        <img src="/Uploads/Product/@item.ProductImages.FirstOrDefault().ImageURL" alt="IMG-PRODUCT" height="300" width="100">
                                     }
 
 
@@ -136,7 +182,7 @@
 
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
                                             <!-- Button -->
-                                            <button id="cart" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            <button id="cart" rel="@item.Id" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                 Sepete Ekle
                                             </button>
                                         </div>
@@ -168,3 +214,29 @@
 </section>
 
 @Html.Action("_Slider", "Home", new { area = "" })
+<script type="text/javascript" src="/Content/Site/vendor/noui/nouislider.min.js"></script>
+<script type="text/javascript">
+		/*[ No ui ]
+	    ===========================================================*/
+	    var filterBar = document.getElementById('filter-bar');
+
+	    noUiSlider.create(filterBar, {
+	        start: [ 50, 200 ],
+	        connect: true,
+	        range: {
+	            'min': 50,
+	            'max': 200
+	        }
+	    });
+
+	    var skipValues = [
+	    document.getElementById('value-lower'),
+	    document.getElementById('value-upper')
+	    ];
+
+	    filterBar.noUiSlider.on('update', function( values, handle ) {
+	        skipValues[handle].innerHTML = Math.round(values[handle]) ;
+	    });
+</script>
+<!--===============================================================================================-->
+<script src="/Content/Site/js/main.js"></script>

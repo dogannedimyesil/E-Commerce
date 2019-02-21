@@ -34,5 +34,10 @@ namespace E_Commerce.Controllers
             ViewBag.Products = db.Products.OrderByDescending(x => x.Id).Take(15).ToList();
             return View();
         }
+
+        public ActionResult _MinCart()
+        {
+            return View();
+        }
     }
 }

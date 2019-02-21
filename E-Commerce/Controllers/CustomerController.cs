@@ -28,6 +28,7 @@ namespace E_Commerce.Controllers
                         isTrue = true;
                         Session["Email"] = item.Email;
                         Session["NameSurname"] = item.NameSurname;
+                        Session["Id"] = item.Id;
                         return RedirectToAction("Index", "Home");
                           
                     }

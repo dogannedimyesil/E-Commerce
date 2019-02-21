@@ -12,18 +12,24 @@ namespace E_Commerce.Controllers
         CommerceContext db = new CommerceContext();
         public ActionResult Index(int ? id, HttpPostedFileBase[] image)
         {
-            //ViewBag.ProductImage = (from p in db.Products
-            //                        join pi in db.ProductImages
-            // on p.Id equals pi.Product.Id where p.Id == pi.Product.Id
-            //                        select new
-            //                        {
-                                        
-            //                        });
+            ViewBag.HighPrice = db.Products.OrderBy(x => x.Price);
+            ViewBag.Price = db.Products.OrderByDescending(x => x.Price);
             ViewBag.Categories = db.Categories.ToList();
-            if (id != null)
+            if (id.HasValue)
                 return View(db.Products.Where(x => x.CategoryId == id).ToList());
             else
                 return View(db.Products.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult Index(string search)
+        {
+            var products = from p in db.Products select p;
+            if (!String.IsNullOrEmpty(search))
+                products = products.Where(x => x.Name.Contains(search));
+
+            ViewBag.Categories = db.Categories.ToList();
+            return View("Index", "",  products.ToList());
         }
 
         public ActionResult ProductDetail(int id)
