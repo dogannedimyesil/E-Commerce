@@ -28,6 +28,7 @@ namespace E_Commerce.Controllers
                         isTrue = true;
                         Session["Email"] = item.Email;
                         Session["NameSurname"] = item.NameSurname;
+                        Session["Id"] = item.Id;
                         return RedirectToAction("Index", "Home");
                           
                     }
@@ -40,6 +41,14 @@ namespace E_Commerce.Controllers
         [HttpGet]
         public ActionResult Index(string a)
         {
+            return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            Session.Clear();
+            Session.RemoveAll();
+            RedirectToAction("Index","Home");
             return View();
         }
         [HttpPost]
