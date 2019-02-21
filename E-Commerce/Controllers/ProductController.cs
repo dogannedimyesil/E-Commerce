@@ -28,6 +28,8 @@ namespace E_Commerce.Controllers
             if (!String.IsNullOrEmpty(search))
                 products = products.Where(x => x.Name.Contains(search));
 
+            ViewBag.HighPrice = db.Products.OrderBy(x => x.Price);
+            ViewBag.Price = db.Products.OrderByDescending(x => x.Price);
             ViewBag.Categories = db.Categories.ToList();
             return View("Index", "",  products.ToList());
         }
