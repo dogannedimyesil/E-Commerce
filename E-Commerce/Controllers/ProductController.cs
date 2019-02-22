@@ -38,5 +38,6 @@ namespace E_Commerce.Controllers
         {
             return View(db.Products.Find(id));
         }
+        
     }
 }

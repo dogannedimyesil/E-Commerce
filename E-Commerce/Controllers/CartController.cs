@@ -13,11 +13,14 @@ namespace E_Commerce.Controllers
         CommerceContext db = new CommerceContext();
         public ActionResult Index()
         {
-            return View(db.CartDetails.ToList());
+            var id = Session["Id"];
+            Customer c = db.Customers.Find(id);
+            return View(c.Cart);
+           
         }
 
         [HttpPost]
-        public JsonResult AddToCart(int id)
+        public JsonResult AddToCart(int id )
         {
 
             if (Session["Id"] == null)
