@@ -11,16 +11,21 @@ namespace E_Commerce.Controllers
     public class CartController : Controller
     {
         CommerceContext db = new CommerceContext();
+
         public ActionResult Index()
         {
-            var id = Session["Id"];
-            Customer c = db.Customers.Find(id);
-            return View(c.Cart);
-           
+            if (Session["Id"] == null)
+                return View();
+            else
+            {
+                var id = Session["Id"];
+                Customer c = db.Customers.Find(id);
+                return View(c.Cart);
+            }
         }
 
         [HttpPost]
-        public JsonResult AddToCart(int id )
+        public JsonResult AddToCart(int id,string count)
         {
 
             if (Session["Id"] == null)
@@ -38,7 +43,7 @@ namespace E_Commerce.Controllers
           
             CartDetail cd = new CartDetail();
             cd.Product = db.Products.Find(id);
-            //cd.Quantity = 
+            cd.Quantity = Convert.ToInt32(count);
            
             if (ModelState.IsValid)
             {

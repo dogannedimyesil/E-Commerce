@@ -15,7 +15,7 @@ namespace E_Commerce.Models
         public virtual List<Product> Products { get; set; } 
         public virtual List<Customer> Customers { get; set; }  
         public virtual List<CartDetail> CartDetail { get; set; }
-        public bool IsActive { get; set; }
+        //public bool IsActive { get; set; }
         public Cart()
         {
             CreateDate = DateTime.Now;
@@ -23,7 +23,7 @@ namespace E_Commerce.Models
 
         public decimal SubTotal { get
             {
-                return Products ==null ? 0 : Products.Sum(x => x.Price);
+                return Products ==null ? 0 : CartDetail.Sum(x => x.Total);
             } }
     }
 }

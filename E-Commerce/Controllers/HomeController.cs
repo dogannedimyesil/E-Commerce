@@ -11,16 +11,18 @@ namespace E_Commerce.Controllers
     {
         CommerceContext db = new CommerceContext();
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
+            var list = db.Products.ToList();
+            if (id.HasValue)
+                list = db.Products.Where(x => x.CategoryId == id).ToList();
             ViewBag.Categories = db.Categories.Take(6).ToList();
-            
-            return View();
+            return View(list);
         }
 
         public ActionResult _Menu()
         {
-            ViewBag.Categories = db.Categories.Where(x => x.ParentId==null).ToList();
+            ViewBag.Categories = db.Categories.Where(x => x.ParentId == null).ToList();
             return View();
         }
 
@@ -37,7 +39,13 @@ namespace E_Commerce.Controllers
 
         public ActionResult _MinCart()
         {
-            return View();
+            //if (Session["Id"] == null)
+               // Response.Redirect("Home");
+
+            var customerId = Session["Id"];
+            Customer c = db.Customers.Find(customerId);
+           
+            return View(c.Cart);
         }
     }
 }

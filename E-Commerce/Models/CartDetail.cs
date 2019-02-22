@@ -21,9 +21,8 @@ namespace E_Commerce.Models
                 if (Product == null)
                     return 0;
                 else
-                return Product.Price * Product.ProductQuantity;
+                return Product.Price * Quantity;
             } }
-
        
     }
 }

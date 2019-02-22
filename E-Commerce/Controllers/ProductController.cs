@@ -10,15 +10,24 @@ namespace E_Commerce.Controllers
     public class ProductController : Controller
     {
         CommerceContext db = new CommerceContext();
-        public ActionResult Index(int ? id, HttpPostedFileBase[] image)
+        public ActionResult Index(int? id,string sorting, HttpPostedFileBase[] image)
         {
-            ViewBag.HighPrice = db.Products.OrderBy(x => x.Price);
-            ViewBag.Price = db.Products.OrderByDescending(x => x.Price);
-            ViewBag.Categories = db.Categories.ToList();
+            var list = db.Products.ToList();
             if (id.HasValue)
-                return View(db.Products.Where(x => x.CategoryId == id).ToList());
-            else
-                return View(db.Products.ToList());
+                list = db.Products.Where(x => x.CategoryId == id).ToList();
+            switch (sorting)
+            {
+                case "1":
+                    list = list.OrderByDescending(x => x.Price).ToList();
+                    break;
+                case "2":
+                    list = list.OrderBy(x => x.Price).ToList();
+                    break;
+                default:
+                    break;
+            }
+            ViewBag.Categories = db.Categories.ToList();
+            return View(list);
         }
 
         [HttpPost]
@@ -28,8 +37,7 @@ namespace E_Commerce.Controllers
             if (!String.IsNullOrEmpty(search))
                 products = products.Where(x => x.Name.Contains(search));
 
-            ViewBag.HighPrice = db.Products.OrderBy(x => x.Price);
-            ViewBag.Price = db.Products.OrderByDescending(x => x.Price);
+           
             ViewBag.Categories = db.Categories.ToList();
             return View("Index", "",  products.ToList());
         }

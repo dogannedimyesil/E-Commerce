@@ -133,10 +133,10 @@
                 <div class="flex-sb-m flex-w p-b-35">
                     <div class="flex-w">
                         <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                            <select class="selection-2" name="sorting">
-                                <option >Sıralama</option>
-                                <option>Fiyata Göre Artan</option>
-                                <option>Fiyata Göre Azalan</option>
+                            <select class="selection-2" id="slc_sort" onchange="ListOrderDesc(this)" name="sorting">
+                                <option selected value="0">Sıralama</option>
+                                <option value="2">Fiyata Göre Artan</option>
+                                <option value="1">Fiyata Göre Azalan</option>
                                
                             </select>
                         </div  >               
@@ -219,7 +219,12 @@
 
 	    filterBar.noUiSlider.on('update', function( values, handle ) {
 	        skipValues[handle].innerHTML = Math.round(values[handle]) ;
-	    });
+    });
+
+    function ListOrderDesc(elm) {
+        var value = $('#' + elm.id).val();
+        return window.location = "/Product/Index?sorting=" + value;
+    }
 </script>
 <!--===============================================================================================-->
 <script src="/Content/Site/js/main.js"></script>
