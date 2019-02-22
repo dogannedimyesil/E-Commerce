@@ -221,7 +221,7 @@
                     <input name="NameSurname" type="text" placeholder="Ad Soyad">
                     <input name="Email" type="text" placeholder="Email">
                     <input name="Password" type="password" placeholder="Şifre">
-                    <input name="Password" type="password" placeholder="Şifre (Tekrar)">
+                    <input name="Password2" type="password" placeholder="Şifre (Tekrar)">
                     <input type="button" value="ÜYE OL" class="del">
                 </form>
                 
@@ -268,11 +268,11 @@
                 success: function (olduMu) {
                     if (olduMu) {
                         alert("Kayıt Başarılı.");
-                        window.location.href='/Home/Index';
+                        window.location.href='/Customer/Index';
 
                     }
                     else {
-                        alert("Bir hata oluştu.");
+                        alert("Geçersiz Kullanıcı Adı veya Şifre");
                     }
                 }
             });
