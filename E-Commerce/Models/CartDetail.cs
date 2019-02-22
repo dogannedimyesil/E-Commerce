@@ -18,6 +18,9 @@ namespace E_Commerce.Models
         public int Quantity { get; set; }
         public decimal Total { get
             {
+                if (Product == null)
+                    return 0;
+                else
                 return Product.Price * Product.ProductQuantity;
             } }
 

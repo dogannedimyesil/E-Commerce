@@ -25,7 +25,6 @@ namespace E_Commerce.Models
         public virtual Category Category { get; set; }
         public virtual List<ProductImage> ProductImages { get; set; }
         public virtual List<Cart> Cart { get; set; }
-        
 
     }
     public enum Size

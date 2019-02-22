@@ -17,18 +17,30 @@ namespace E_Commerce.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddToCart(CartDetail cart)
+        public JsonResult AddToCart(int id)
         {
-            if(Session["NameSurname"] == null)
+
+            if (Session["Id"] == null)
             {
                 Response.Redirect("Home");
             }
-            var customer = db.Customers.FirstOrDefault(x => x.Id == 21);
+            var customerid = Session["Id"];
+
+            Customer c = db.Customers.Find(customerid);
+            if (c.Cart == null)
+                c.Cart = new Cart();
             
+            if (c.Cart.CartDetail == null)
+                c.Cart.CartDetail = new List<CartDetail>();
+          
+            CartDetail cd = new CartDetail();
+            cd.Product = db.Products.Find(id);
+            //cd.Quantity = 
+           
             if (ModelState.IsValid)
             {
-                customer.Cart.CartDetail.Add(cart);
-                db.Entry(customer).State = EntityState.Modified;
+                c.Cart.CartDetail.Add(cd);
+                db.Entry(c).State = EntityState.Modified;
                 db.SaveChanges();
                 return Json(true);
             }

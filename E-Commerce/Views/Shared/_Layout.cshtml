@@ -164,9 +164,9 @@
 
     <script type="text/javascript">
         $("#cart").on('click', function () {
-            var cart = $(this).attr("rel");
+            var id = $(this).attr("rel");
             $.ajax({
-                url: "/Cart/AddToCart/" + cart,
+                url: "/Cart/AddToCart/" + id,
                 method: "POST"
             })
             swal(nameProduct, "Ürün sepete eklendi !", "success");

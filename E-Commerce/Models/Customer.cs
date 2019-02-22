@@ -17,7 +17,6 @@ namespace E_Commerce.Models
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public virtual List<Order> Orders { get; set; }
-        
         public virtual Cart Cart { get; set; }
     }
     
