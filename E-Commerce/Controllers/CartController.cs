@@ -13,7 +13,7 @@ namespace E_Commerce.Controllers
         CommerceContext db = new CommerceContext();
         public ActionResult Index()
         {
-            return View(db.Carts.ToList());
+            return View(db.CartDetails.ToList());
         }
 
         [HttpPost]
