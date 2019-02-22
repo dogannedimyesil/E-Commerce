@@ -21,16 +21,16 @@ namespace E_Commerce.Controllers
             List<Customer> ListCustomers = db.Customers.ToList();
             foreach (var item in ListCustomers)
             {
-                if(Email == item.Email)
+                if (Email == item.Email)
                 {
-                    if(Password == item.Password)
+                    if (Password == item.Password)
                     {
                         isTrue = true;
                         Session["Email"] = item.Email;
                         Session["NameSurname"] = item.NameSurname;
                         Session["Id"] = item.Id;
                         return RedirectToAction("Index", "Home");
-                          
+
                     }
                 }
             }
@@ -48,20 +48,23 @@ namespace E_Commerce.Controllers
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
-            RedirectToAction("Index","Home");
-            return View();
+            return RedirectToAction("Index", "Home");
         }
         [HttpPost]
-        public JsonResult Customer(Customer customer)
+        public JsonResult Customer(Customer customer, string Password, string Password2)
         {
-            if(ModelState.IsValid)
+            if (Password == Password2)
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                RedirectToAction("Index");
-                return Json(true);
+                if (ModelState.IsValid)
+                {
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+                    RedirectToAction("Customer");
+                    return Json(true);
+                }
             }
+
             return Json(false);
         }
-    } 
+    }
 }
