@@ -24,8 +24,19 @@ namespace E_Commerce.Controllers
             }
         }
 
+        public ActionResult Delete(int id)
+        {
+            var customerid = Session["Id"];
+            Customer c = db.Customers.Find(customerid);
+            CartDetail toBeDeleted = db.CartDetails.Find(id);
+            c.Cart.CartDetail.Remove(toBeDeleted);
+            db.Entry(c).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
-        public JsonResult AddToCart(int id,string count)
+        public JsonResult AddToCart(int id,string count,Size size)
         {
 
             if (Session["Id"] == null)
@@ -44,6 +55,7 @@ namespace E_Commerce.Controllers
             CartDetail cd = new CartDetail();
             cd.Product = db.Products.Find(id);
             cd.Quantity = Convert.ToInt32(count);
+            cd.Product.Size = size;
            
             if (ModelState.IsValid)
             {
@@ -53,6 +65,11 @@ namespace E_Commerce.Controllers
                 return Json(true);
             }
             return Json(false);
+        }
+
+        public ActionResult Checkout()
+        {
+            return View();
         }
     }
 }

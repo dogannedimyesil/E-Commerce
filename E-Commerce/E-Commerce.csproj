@@ -2938,6 +2938,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\FileViewModel.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2961,6 +2962,7 @@
     <Content Include="Views\Home\_Slider.cshtml" />
     <Content Include="Views\Home\_MinCart.cshtml" />
     <Content Include="Views\Customer\Logout.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

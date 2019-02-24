@@ -10,12 +10,13 @@ namespace E_Commerce.Controllers
     public class HomeController : Controller
     {
         CommerceContext db = new CommerceContext();
-        // GET: Home
+        
         public ActionResult Index(int? id)
         {
             var list = db.Products.ToList();
             if (id.HasValue)
                 list = db.Products.Where(x => x.CategoryId == id).ToList();
+
             ViewBag.Categories = db.Categories.Take(6).ToList();
             return View(list);
         }
@@ -39,13 +40,21 @@ namespace E_Commerce.Controllers
 
         public ActionResult _MinCart()
         {
-            //if (Session["Id"] == null)
-               // Response.Redirect("Home");
-
-            var customerId = Session["Id"];
-            Customer c = db.Customers.Find(customerId);
-           
+            Customer c = new Customer();
+            if (c.Cart == null)
+                c.Cart = new Cart();
+            if (Session["Id"] == null)
+            {
+                ViewBag.count = 0;
+            }
+            else
+            {
+                var customerId = Session["Id"];
+                c = db.Customers.Find(customerId);
+                ViewBag.count = c.Cart.CartDetail.Count;
+            }
             return View(c.Cart);
+
         }
     }
 }

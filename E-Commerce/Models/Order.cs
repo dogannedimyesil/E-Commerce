@@ -12,9 +12,12 @@ namespace E_Commerce.Models
         [Key]
         public int Id { get; set; }
         public DateTime Date { get; set; }
+        public bool IsPaid { get; set; }
+        public decimal SubTotal { get; set; }
+        public virtual List<OrderDetail> OrderDetails { get; set; }
         [ForeignKey("Customer")]
         public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
-        public int OrderQuantity { get; set; }
+
     }
 }

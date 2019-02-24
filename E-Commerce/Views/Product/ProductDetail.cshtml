@@ -41,7 +41,7 @@
         </div>
 
         <div class="w-size14 p-t-30 respon5">
-            <h4 class="product-detail-name m-text16 p-b-13">
+            <h4 class="product-detail-name m-text16 p-b-13" id="pName">
                 Ürün Adı: @Model.Name
             </h4>
 
@@ -61,12 +61,16 @@
                     </div>
 
                     <div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-                        <select class="selection-2" name="size">
+                        <select class="selection-2" name="size" id="size">
                             <option>Beden seçiniz</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
+                            <option value="">Seçiniz</option>
+                            @{
+                                var sizeoptions = Enum.GetValues(typeof(Size));
+                            }
+                            @foreach (var item in sizeoptions)
+                            {
+                                <option value="@Array.IndexOf(sizeoptions,item)">@item</option>}
+
                         </select>
                     </div>
                 </div>

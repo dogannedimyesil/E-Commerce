@@ -30,7 +30,6 @@ namespace E_Commerce.Controllers
                         Session["NameSurname"] = item.NameSurname;
                         Session["Id"] = item.Id;
                         return RedirectToAction("Index", "Home");
-
                     }
                 }
             }
@@ -43,6 +42,7 @@ namespace E_Commerce.Controllers
         {
             return View();
         }
+
         public ActionResult Logout()
         {
             Session.Abandon();
@@ -50,6 +50,7 @@ namespace E_Commerce.Controllers
             Session.RemoveAll();
             return RedirectToAction("Index", "Home");
         }
+
         [HttpPost]
         public JsonResult Customer(Customer customer, string Password, string Password2)
         {
