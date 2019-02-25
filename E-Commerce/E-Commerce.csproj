@@ -2963,6 +2963,8 @@
     <Content Include="Views\Home\_MinCart.cshtml" />
     <Content Include="Views\Customer\Logout.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Customer\ForgotPassword.cshtml" />
+    <Content Include="Views\Customer\ResetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

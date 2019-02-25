@@ -1,8 +1,11 @@
 ﻿using E_Commerce.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,6 +17,7 @@ namespace E_Commerce.Controllers
 
         CommerceContext db = new CommerceContext();
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(string Email, string Password)
         {
             bool? isTrue = false;
@@ -66,6 +70,51 @@ namespace E_Commerce.Controllers
             }
 
             return Json(false);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword(string Mail)
+        {
+            MailMessage email = new MailMessage();
+            email.From = new MailAddress("kucukaydin35@gmail.com");
+            email.To.Add(Mail);
+            email.Subject = "Reset your Le Nedimo password!!";
+            email.Body = "http://localhost:61095/Customer/ResetPassword?Mail=" + Mail;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Credentials = new NetworkCredential("kucukaydin35@gmail.com", "s41mb3yl1");
+            smtp.Port = 587;
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
+            smtp.Send(email);
+            return View(true);
+        }
+        [HttpGet]
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ResetPassword(string newPassword, string newPassword2)
+        {
+            bool? Control = false;
+            ViewBag.CheckinPassword = "Passwords must be same!";
+            if (newPassword == newPassword2)
+            {
+                string Mail = Request.QueryString["Mail"];
+                Customer Account = db.Customers.Where(x => x.Email == Mail).FirstOrDefault();
+                Account.Password = newPassword;
+                db.Entry(Account).State = EntityState.Modified;
+                db.SaveChanges();
+                Control = true;
+                RedirectToAction("Index");
+            }
+            return View(Control);
+        }
+        [HttpGet]
+        public ActionResult ResetPassword()
+        {
+            return View();
         }
     }
 }
