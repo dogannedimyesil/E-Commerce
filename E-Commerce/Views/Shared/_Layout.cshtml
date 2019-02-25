@@ -172,8 +172,9 @@
             var id = $(this).attr("rel");
             var urunAdet = $('#quantity').val();
             var size = $('#size').val();
+            var color = $('#color').val();
             $.ajax({
-                url: "/Cart/AddToCart?id=" + id + "&count=" + urunAdet + "&size=" + size,
+                url: "/Cart/AddToCart?id=" + id + "&count=" + urunAdet + "&size=" + size + '&color=' + color,
                 method: "POST",
                 success: function (data) {
                     if (data) {

@@ -43,6 +43,8 @@ namespace E_Commerce.Controllers
             Customer c = new Customer();
             if (c.Cart == null)
                 c.Cart = new Cart();
+            if (c.Cart.CartDetail == null)
+                c.Cart.CartDetail = new List<CartDetail>();
             if (Session["Id"] == null)
             {
                 ViewBag.count = 0;
@@ -51,7 +53,7 @@ namespace E_Commerce.Controllers
             {
                 var customerId = Session["Id"];
                 c = db.Customers.Find(customerId);
-                ViewBag.count = c.Cart.CartDetail.Count;
+                ViewBag.count =  c.Cart.CartDetail.Count;
             }
             return View(c.Cart);
 

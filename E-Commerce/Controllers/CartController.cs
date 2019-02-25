@@ -36,7 +36,7 @@ namespace E_Commerce.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddToCart(int id,string count,Size size)
+        public JsonResult AddToCart(int id,string count,Size size, string color)
         {
 
             if (Session["Id"] == null)
@@ -56,6 +56,7 @@ namespace E_Commerce.Controllers
             cd.Product = db.Products.Find(id);
             cd.Quantity = Convert.ToInt32(count);
             cd.Product.Size = size;
+            cd.Product.Color = color;
            
             if (ModelState.IsValid)
             {

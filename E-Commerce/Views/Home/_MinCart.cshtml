@@ -9,30 +9,34 @@
 <span class="header-icons-noti">@ViewBag.count</span>
 <!-- Header cart noti -->
 <div class="header-cart header-dropdown">
-    @if (Model.CartDetail != null)
+    @if (Model != null)
     {
-        <ul class="header-cart-wrapitem">
-            @foreach (var item in Model.CartDetail)
-            {
-                <li class="header-cart-item">
-                    <div class="header-cart-item-img">
-                        <img src="~/Uploads/Product/@item.Product.ProductImages.FirstOrDefault().ImageURL" alt="IMG">
-                    </div>
+        if (Model.CartDetail != null)
+        {
+            <ul class="header-cart-wrapitem">
+                @foreach (var item in Model.CartDetail)
+                {
+                    <li class="header-cart-item">
+                        <div class="header-cart-item-img">
+                            <img src="~/Uploads/Product/@item.Product.ProductImages.FirstOrDefault().ImageURL" alt="IMG">
+                        </div>
 
-                    <div class="header-cart-item-txt">
-                        <a href="#" class="header-cart-item-name">
-                            @item.Product.Name
-                        </a>
+                        <div class="header-cart-item-txt">
+                            <a href="#" class="header-cart-item-name">
+                                @item.Product.Name
+                            </a>
 
-                        <span class="header-cart-item-info">
-                            @item.Quantity x @item.Product.Price.ToString("C")
-                        </span>
-                    </div>
-                </li>
-            }
+                            <span class="header-cart-item-info">
+                                @item.Quantity x @item.Product.Price.ToString("C")
+                            </span>
+                        </div>
+                    </li>
+                }
 
-        </ul>
+            </ul>
+        }
     }
+
 
     <div class="header-cart-total">
         Total: @Model.SubTotal.ToString("C")
