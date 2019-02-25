@@ -2914,6 +2914,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Uploads\Product\images.jpg" />
+    <Content Include="Uploads\Product\kapak.jpg" />
+    <Content Include="Uploads\Product\wp1866282.jpg" />
+    <Content Include="Uploads\Product\wp1866283.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -2976,7 +2980,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Panel\Models\" />
     <Folder Include="Uploads\CategoryImage\" />
-    <Folder Include="Uploads\Product\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
