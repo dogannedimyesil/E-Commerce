@@ -14,7 +14,7 @@ namespace E_Commerce.Models
         public DateTime CreateDate { get; set; }
         public virtual List<Product> Products { get; set; }
         public virtual List<Customer> Customers { get; set; }
-        public virtual List<CartDetail> CartDetail { get; set; }
+        public virtual List<CartDetail> CartDetail { get; set; } 
 
         public Cart()
         {

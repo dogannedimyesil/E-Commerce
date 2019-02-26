@@ -29,7 +29,7 @@ namespace E_Commerce.Controllers
 
         public ActionResult _Footer()
         {
-            return View();
+            return View(db.Categories.Take(5).ToList());
         }
 
         public ActionResult _Slider()
