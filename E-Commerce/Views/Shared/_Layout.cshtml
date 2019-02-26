@@ -65,18 +65,18 @@
                         info@lenedimo.com
                     </span>
 
-                    <div class="topbar-language rs1-select2">
-                        <select class="selection-1" name="time">
-                            <option>USD</option>
-                            <option>EUR</option>
-                        </select>
-                    </div>
+                    @*<div class="topbar-language rs1-select2">
+                            <select class="selection-1" name="time">
+                                <option>USD</option>
+                                <option>EUR</option>
+                            </select>
+                        </div>*@
                 </div>
             </div>
 
             <div class="wrap_header">
                 <!-- Logo -->
-                <a href="index.html" class="logo">
+                <a href="/Home/Index" class="logo">
                     <h5>Le Nedi<span style="color:red;">mo</span></h5>
                     @*<img src="/Content/Site/images/icons/logo.png" alt="IMG-LOGO">*@
                 </a>
@@ -127,7 +127,7 @@
     @RenderBody()
 
 
-
+    @*@Html.Action("_Slider", "Home", new { area = "" })*@
     <!-- Footer -->
     @Html.Action("_Footer", "Home", new { area = "" })
     <!-- Back to top -->
@@ -181,10 +181,10 @@
                         var nameProduct = $('#pName').html();
                         swal(nameProduct, "Ürün sepete eklendi !", "success");
                     }
-                  
+
                 }
             });
-          
+
         });
 
         $('#quantity').on("keyup", function () {
@@ -195,14 +195,14 @@
 
         $('.block2-btn-addcart').each(function () {
             var nameProduct = $('#pName').html();
-                $(this).on('click', function () {
-                    var id = $("#cart").attr("rel");
-                    $.ajax({
-                        url: "/Cart/AddToCart?id=" + id+"&count=1&size=0",
-                        method: "POST"
-                    })
-                    swal(nameProduct, "Ürün sepete eklendi !", "success");
-                });
+            $(this).on('click', function () {
+                var id = $("#cart").attr("rel");
+                $.ajax({
+                    url: "/Cart/AddToCart?id=" + id + "&count=1&size=0",
+                    method: "POST"
+                })
+                swal(nameProduct, "Ürün sepete eklendi !", "success");
+            });
         });
 
         $('.block2-btn-addwishlist').each(function () {

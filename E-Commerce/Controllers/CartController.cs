@@ -28,8 +28,8 @@ namespace E_Commerce.Controllers
         {
             var customerid = Session["Id"];
             Customer c = db.Customers.Find(customerid);
-            CartDetail toBeDeleted = db.CartDetails.Find(id);
-            c.Cart.CartDetail.Remove(toBeDeleted);
+            CartDetail deleted = db.CartDetails.Find(id);
+            c.Cart.CartDetail.Remove(deleted);
             db.Entry(c).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
